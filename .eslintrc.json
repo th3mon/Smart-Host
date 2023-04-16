@@ -1,3 +1,11 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "no-trailing-spaces": "error",
+    "object-curly-spacing": ["error", "always"],
+    "semi": "error",
+    "semi-style": ["error", "last"],
+    "max-len": ["error", { "code": 120 }]
+  }
 }
