@@ -16,6 +16,7 @@
         "ignoreStrings": true,
         "ignoreTemplateLiterals": true
       }
-    ]
+    ],
+    "prefer-const": "error"
   }
 }
