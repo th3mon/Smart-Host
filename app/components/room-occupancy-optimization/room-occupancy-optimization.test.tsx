@@ -45,6 +45,29 @@ describe('Room Occupancy Optimization', () => {
     expect(economyUsage).toHaveTextContent('167 EUR');
   });
 
+  it('should have 1054 EUR premium usage and 189 EUR economy usage', async () => {
+    const premiumRooms = 7;
+    const economyRooms = 5;
+    render(<RoomOccupancyOptimization />);
+    const premiumUsage = screen.getByTestId('premium-usage__value');
+    const economyUsage = screen.getByTestId('economy-usage__value');
+
+    await userEvent.type(
+      screen.getByLabelText(/Premium Rooms/i),
+      String(premiumRooms)
+    );
+
+    await userEvent.type(
+      screen.getByLabelText(/Economy Rooms/i),
+      String(economyRooms)
+    );
+
+    await userEvent.click(screen.getByText(/calculate usage/i));
+
+    expect(premiumUsage).toHaveTextContent('1054 EUR');
+    expect(economyUsage).toHaveTextContent('189 EUR');
+  });
+
   it('should have 1153 EUR premium usage and 45 EUR economy usage', async () => {
     const premiumRooms = 7;
     const economyRooms = 1;

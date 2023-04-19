@@ -4,25 +4,26 @@ export const isPremium = (guest: number): boolean => guest >= 100;
 export const pickEconomyGuests = (guests: number[]): number[] =>
   guests.filter(isEconomy);
 
-export const pickPremiumGuests = (
+export const pickPremiumGuests = (guests: number[]): number[] =>
+  guests.filter(isPremium);
+
+export const upgradeGuestToPremium = (
   guests: number[],
+  premiumGuests: number[],
   rooms: number
 ): number[] => {
-  const premiumGuests = guests.filter(isPremium);
   const emptyPremiumRooms = rooms - premiumGuests.length;
-  const upgradeGuestToPremium = (guests: number[]): number[] =>
-    [...guests]
+
+  if (emptyPremiumRooms > 0) {
+    return [...guests]
       .filter((guest) => {
         return !premiumGuests.includes(guest);
       })
       .sort(sortNumbersDescending)
       .slice(0, emptyPremiumRooms);
-
-  if (emptyPremiumRooms > 0) {
-    return [...premiumGuests, ...upgradeGuestToPremium(guests)];
   }
 
-  return premiumGuests;
+  return [...guests];
 };
 
 export const sortNumbersDescending = (a: number, b: number) => b - a;

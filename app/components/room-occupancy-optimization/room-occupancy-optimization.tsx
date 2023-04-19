@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  getUsage,
   pickEconomyGuests,
   pickPremiumGuests,
+  sortNumbersDescending,
 } from '../../prototype';
 
 const guestsInitial = [23, 45, 155, 374, 22, 99, 100, 101, 115, 209];
@@ -13,19 +13,80 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
   const [economyRooms, setEconomyRooms] = React.useState<number>(0);
   const [economyUsage, setEconomyUsage] = React.useState<number>(0);
 
+  const upgradeEconomyGuests = (
+    economyGuests: number[],
+    emptyEconomyRooms: number
+  ) => {
+    return economyGuests
+      .sort(sortNumbersDescending)
+      .slice(0, emptyEconomyRooms);
+  };
+
+  const premiumGuestsWithUpgradedEconomyGuests = ({
+    filledEconomyRooms,
+    emptyPremiumRooms,
+    economyGuests,
+    premiumGuests,
+  }: {
+    filledEconomyRooms: boolean;
+    emptyPremiumRooms: number;
+    economyGuests: number[];
+    premiumGuests: number[];
+  }): number[] => {
+    if (filledEconomyRooms && emptyPremiumRooms > 0) {
+      return [
+        ...premiumGuests,
+        ...upgradeEconomyGuests(economyGuests, emptyPremiumRooms),
+      ]
+        .sort(sortNumbersDescending)
+        .slice(0, premiumRooms);
+    }
+
+    return premiumGuests;
+  };
   const calculateUsage = (event: { preventDefault: () => {} }) => {
     event.preventDefault();
-    const premiumGuests = pickPremiumGuests(guests, premiumRooms);
-    const premiumUsage = getUsage(premiumGuests, premiumRooms);
 
-    setPremiumUsage(premiumUsage);
+    const economyGuests: number[] = pickEconomyGuests(guests);
+    const premiumGuests: number[] = pickPremiumGuests(guests);
+    const emptyEconomyRooms: number = economyRooms - economyGuests.length;
+    const emptyPremiumRooms: number = premiumRooms - premiumGuests.length;
+    const filledEconomyRooms: boolean = emptyEconomyRooms <= 0;
 
-    const economyGuests = pickEconomyGuests(
-      [...guests].filter((guest: number) => !premiumGuests.includes(guest))
+    const bookedEconomyGuests: number[] = [
+      ...economyGuests.filter(
+        (x) =>
+          !premiumGuestsWithUpgradedEconomyGuests({
+            filledEconomyRooms,
+            emptyPremiumRooms,
+            economyGuests,
+            premiumGuests,
+          }).includes(x)
+      ),
+    ]
+      .sort(sortNumbersDescending)
+      .slice(0, economyRooms);
+
+    const economyUsage: number = bookedEconomyGuests.reduce(
+      (acc, guest) => acc + guest,
+      0
     );
-    const economyUsage = getUsage(economyGuests, economyRooms);
+
+    const premiumUsage: number =
+      filledEconomyRooms && emptyPremiumRooms > 0
+        ? premiumGuestsWithUpgradedEconomyGuests({
+            filledEconomyRooms,
+            emptyPremiumRooms,
+            economyGuests,
+            premiumGuests,
+          }).reduce((acc, guest) => acc + guest, 0)
+        : premiumGuests
+            .sort(sortNumbersDescending)
+            .slice(0, premiumRooms)
+            .reduce((acc, guest) => acc + guest, 0);
 
     setEconomyUsage(economyUsage);
+    setPremiumUsage(premiumUsage);
   };
 
   return (
