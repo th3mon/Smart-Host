@@ -1,9 +1,11 @@
 export const isEconomy = (guest: number): boolean => guest < 100;
 export const isPremium = (guest: number): boolean => guest >= 100;
 
-export const pickEconomyGuests = (guests: number[]): number[] => guests.filter(isEconomy);
+export const pickEconomyGuests = (guests: number[]): number[] =>
+  guests.filter(isEconomy);
 
-export const pickPremiumGuests = (guests: number[]): number[] => guests.filter(isPremium);
+export const pickPremiumGuests = (guests: number[]): number[] =>
+  guests.filter(isPremium);
 
 export const sortNumbersDescending = (a: number, b: number) => b - a;
 

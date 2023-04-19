@@ -4,7 +4,7 @@ import {
   isPremium,
   pickEconomyGuests,
   pickPremiumGuests,
-  sortNumbersDescending
+  sortNumbersDescending,
 } from './prototype';
 
 const guests = [23, 45, 155, 374, 22, 99, 100, 101, 115, 209];
