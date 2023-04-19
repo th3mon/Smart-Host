@@ -7,7 +7,7 @@ import {
 
 const guestsInitial = [23, 45, 155, 374, 22, 99, 100, 101, 115, 209];
 export const RoomOccupancyOptimization: React.FunctionComponent = () => {
-  const [guests, setGuests] = React.useState<number[]>(guestsInitial);
+  const [guests] = React.useState<number[]>(guestsInitial);
   const [premiumRooms, setPremiumRooms] = React.useState<number>(0);
   const [premiumUsage, setPremiumUsage] = React.useState<number>(0);
   const [economyRooms, setEconomyRooms] = React.useState<number>(0);
@@ -15,12 +15,16 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
 
   const calculateUsage = (event: { preventDefault: () => {} }) => {
     event.preventDefault();
-    const premiumGuests = pickPremiumGuests(guests);
+    const premiumGuests = pickPremiumGuests(guests, premiumRooms);
     const premiumUsage = getUsage(premiumGuests, premiumRooms);
-    const economyGuests = pickEconomyGuests(guests);
-    const economyUsage = getUsage(economyGuests, economyRooms);
 
     setPremiumUsage(premiumUsage);
+
+    const economyGuests = pickEconomyGuests(
+      [...guests].filter((guest: number) => !premiumGuests.includes(guest))
+    );
+    const economyUsage = getUsage(economyGuests, economyRooms);
+
     setEconomyUsage(economyUsage);
   };
 

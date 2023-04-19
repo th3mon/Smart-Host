@@ -44,7 +44,9 @@ describe('Prototype', () => {
     const guests = [23, 45, 155, 374, 22, 99, 100, 101, 115, 209];
     const premiumGuests = [155, 374, 100, 101, 115, 209];
 
-    expect(pickPremiumGuests(guests)).toEqual(premiumGuests);
+    expect(pickPremiumGuests(guests, premiumGuests.length)).toEqual(
+      premiumGuests
+    );
   });
 
   it('should sort numbers descending', () => {
@@ -63,7 +65,7 @@ describe('Prototype', () => {
   });
 
   it('should get usage for the premium guests', () => {
-    const premiumGuests = pickPremiumGuests(guests);
+    const premiumGuests = pickPremiumGuests(guests, 3);
     const expectedUsage = 738;
 
     expect(getUsage(premiumGuests, 3)).toBe(expectedUsage);
