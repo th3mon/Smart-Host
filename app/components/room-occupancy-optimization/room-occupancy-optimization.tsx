@@ -28,6 +28,28 @@ const fillPremiumRooms = ({
 };
 
 const guestsInitial = [23, 45, 155, 374, 22, 99, 100, 101, 115, 209];
+
+const fillEconomyRooms = ({
+  economyGuests,
+  premiumGuests,
+  emptyEconomyRooms,
+  emptyPremiumRooms,
+}: {
+  economyGuests: number[];
+  premiumGuests: number[];
+  emptyEconomyRooms: number;
+  emptyPremiumRooms: number;
+}) =>
+  economyGuests.filter(
+    (guest: number) =>
+      !fillPremiumRooms({
+        economyGuests,
+        premiumGuests,
+        emptyEconomyRooms,
+        emptyPremiumRooms,
+      }).includes(guest)
+  );
+
 export const RoomOccupancyOptimization: React.FunctionComponent = () => {
   const [guests] = React.useState<number[]>(guestsInitial);
   const [premiumRooms, setPremiumRooms] = React.useState<number>(0);
@@ -43,15 +65,12 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
     const emptyEconomyRooms: number = economyRooms - economyGuests.length;
     const emptyPremiumRooms: number = premiumRooms - premiumGuests.length;
 
-    const economyGuestsWithoutUpgraded: number[] = economyGuests.filter(
-      (guest: number) =>
-        !fillPremiumRooms({
-          emptyEconomyRooms,
-          emptyPremiumRooms,
-          economyGuests,
-          premiumGuests,
-        }).includes(guest)
-    );
+    const economyGuestsWithoutUpgraded: number[] = fillEconomyRooms({
+      economyGuests,
+      premiumGuests,
+      emptyEconomyRooms,
+      emptyPremiumRooms,
+    });
 
     const economyUsage: number = economyGuestsWithoutUpgraded
       .sort(sortNumbersDescending)
