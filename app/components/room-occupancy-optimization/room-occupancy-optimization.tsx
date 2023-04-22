@@ -4,13 +4,7 @@ import {
   pickPremiumGuests,
   sortNumbersDescending,
 } from '../../utils';
-
-const upgradeEconomyGuests = (
-  economyGuests: number[],
-  emptyEconomyRooms: number
-): number[] => {
-  return economyGuests.sort(sortNumbersDescending).slice(0, emptyEconomyRooms);
-};
+import { upgradeEconomyGuests } from './upgrade-economy-guests';
 
 const fillPremiumRooms = ({
   emptyEconomyRooms,
