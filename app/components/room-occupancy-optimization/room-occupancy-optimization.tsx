@@ -22,7 +22,7 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
       .slice(0, emptyEconomyRooms);
   };
 
-  const premiumGuestsWithUpgradedEconomyGuests = ({
+  const premiumGuestsWithUpgradedEconomyGuestsOrPremiumGuests = ({
     filledEconomyRooms,
     emptyPremiumRooms,
     economyGuests,
@@ -33,17 +33,14 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
     economyGuests: number[];
     premiumGuests: number[];
   }): number[] => {
-    if (filledEconomyRooms && emptyPremiumRooms > 0) {
-      return [
-        ...premiumGuests,
-        ...upgradeEconomyGuests(economyGuests, emptyPremiumRooms),
-      ]
-        .sort(sortNumbersDescending)
-        .slice(0, premiumRooms);
-    }
-
-    return premiumGuests;
+    return filledEconomyRooms && emptyPremiumRooms > 0
+      ? [
+          ...premiumGuests,
+          ...upgradeEconomyGuests(economyGuests, emptyPremiumRooms),
+        ]
+      : premiumGuests;
   };
+
   const calculateUsage = (event: { preventDefault: () => {} }) => {
     event.preventDefault();
 
@@ -56,7 +53,7 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
     const bookedEconomyGuests: number[] = [
       ...economyGuests.filter(
         (x) =>
-          !premiumGuestsWithUpgradedEconomyGuests({
+          !premiumGuestsWithUpgradedEconomyGuestsOrPremiumGuests({
             filledEconomyRooms,
             emptyPremiumRooms,
             economyGuests,
@@ -73,17 +70,15 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
     );
 
     const premiumUsage: number =
-      filledEconomyRooms && emptyPremiumRooms > 0
-        ? premiumGuestsWithUpgradedEconomyGuests({
-            filledEconomyRooms,
-            emptyPremiumRooms,
-            economyGuests,
-            premiumGuests,
-          }).reduce((acc, guest) => acc + guest, 0)
-        : premiumGuests
-            .sort(sortNumbersDescending)
-            .slice(0, premiumRooms)
-            .reduce((acc, guest) => acc + guest, 0);
+      premiumGuestsWithUpgradedEconomyGuestsOrPremiumGuests({
+        filledEconomyRooms,
+        emptyPremiumRooms,
+        economyGuests,
+        premiumGuests,
+      })
+        .sort(sortNumbersDescending)
+        .slice(0, premiumRooms)
+        .reduce((acc, guest) => acc + guest, 0);
 
     setEconomyUsage(economyUsage);
     setPremiumUsage(premiumUsage);
