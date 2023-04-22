@@ -6,26 +6,6 @@ export const pickEconomyGuests = (guests: number[]): number[] =>
 
 export const pickPremiumGuests = (guests: number[]): number[] =>
   guests.filter(isPremium);
-
-export const upgradeGuestToPremium = (
-  guests: number[],
-  premiumGuests: number[],
-  rooms: number
-): number[] => {
-  const emptyPremiumRooms = rooms - premiumGuests.length;
-
-  if (emptyPremiumRooms > 0) {
-    return [...guests]
-      .filter((guest) => {
-        return !premiumGuests.includes(guest);
-      })
-      .sort(sortNumbersDescending)
-      .slice(0, emptyPremiumRooms);
-  }
-
-  return [...guests];
-};
-
 export const sortNumbersDescending = (a: number, b: number) => b - a;
 
 export const getUsage = (guests: number[], rooms: number): number => {
