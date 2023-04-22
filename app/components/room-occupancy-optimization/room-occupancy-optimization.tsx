@@ -49,24 +49,20 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
     const emptyEconomyRooms: number = economyRooms - economyGuests.length;
     const emptyPremiumRooms: number = premiumRooms - premiumGuests.length;
 
-    const bookedEconomyGuests: number[] = [
-      ...economyGuests.filter(
-        (guest: number) =>
-          !premiumGuestsWithUpgradedEconomyGuestsOrPremiumGuests({
-            emptyEconomyRooms,
-            emptyPremiumRooms,
-            economyGuests,
-            premiumGuests,
-          }).includes(guest)
-      ),
-    ]
-      .sort(sortNumbersDescending)
-      .slice(0, economyRooms);
-
-    const economyUsage: number = bookedEconomyGuests.reduce(
-      (acc, guest) => acc + guest,
-      0
+    const economyGuestsWithoutUpgraded: number[] = economyGuests.filter(
+      (guest: number) =>
+        !premiumGuestsWithUpgradedEconomyGuestsOrPremiumGuests({
+          emptyEconomyRooms,
+          emptyPremiumRooms,
+          economyGuests,
+          premiumGuests,
+        }).includes(guest)
     );
+
+    const economyUsage: number = economyGuestsWithoutUpgraded
+      .sort(sortNumbersDescending)
+      .slice(0, economyRooms)
+      .reduce((acc, guest) => acc + guest, 0);
 
     const premiumUsage: number =
       premiumGuestsWithUpgradedEconomyGuestsOrPremiumGuests({
