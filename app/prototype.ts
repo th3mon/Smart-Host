@@ -1,4 +1,4 @@
-export const sortNumbersDescending = (a: number, b: number) => b - a;
+import { sortNumbersDescending } from './utils';
 
 export const getUsage = (guests: number[], rooms: number): number => {
   return guests
