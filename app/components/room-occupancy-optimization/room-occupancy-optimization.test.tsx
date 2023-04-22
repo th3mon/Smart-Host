@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { RoomOccupancyOptimization } from './room-occupancy-optimization';
@@ -39,7 +39,7 @@ describe('Room Occupancy Optimization', () => {
       String(economyRooms)
     );
 
-    await userEvent.click(screen.getByText(/calculate usage/i));
+    fireEvent.submit(screen.getByText(/calculate usage/i));
 
     expect(premiumUsage).toHaveTextContent('738 EUR');
     expect(economyUsage).toHaveTextContent('167 EUR');
@@ -62,7 +62,7 @@ describe('Room Occupancy Optimization', () => {
       String(economyRooms)
     );
 
-    await userEvent.click(screen.getByText(/calculate usage/i));
+    fireEvent.submit(screen.getByText(/calculate usage/i));
 
     expect(premiumUsage).toHaveTextContent('1054 EUR');
     expect(economyUsage).toHaveTextContent('189 EUR');
@@ -85,7 +85,7 @@ describe('Room Occupancy Optimization', () => {
       String(economyRooms)
     );
 
-    await userEvent.click(screen.getByText(/calculate usage/i));
+    fireEvent.submit(screen.getByText(/calculate usage/i));
 
     expect(premiumUsage).toHaveTextContent('583 EUR');
     expect(economyUsage).toHaveTextContent('189 EUR');
@@ -108,7 +108,7 @@ describe('Room Occupancy Optimization', () => {
       String(economyRooms)
     );
 
-    await userEvent.click(screen.getByText(/calculate usage/i));
+    fireEvent.submit(screen.getByText(/calculate usage/i));
 
     expect(premiumUsage).toHaveTextContent('1153 EUR');
     expect(economyUsage).toHaveTextContent('45 EUR');
