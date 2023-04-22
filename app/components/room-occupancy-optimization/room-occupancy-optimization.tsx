@@ -50,6 +50,13 @@ const fillEconomyRooms = ({
       }).includes(guest)
   );
 
+const getUsage = (guests: number[], rooms: number): number => {
+  return guests
+    .sort(sortNumbersDescending)
+    .slice(0, rooms)
+    .reduce((acc, guest) => acc + guest, 0);
+};
+
 export const RoomOccupancyOptimization: React.FunctionComponent = () => {
   const [guests] = React.useState<number[]>(guestsInitial);
   const [premiumRooms, setPremiumRooms] = React.useState<number>(0);
@@ -65,27 +72,25 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
     const emptyEconomyRooms: number = economyRooms - economyGuests.length;
     const emptyPremiumRooms: number = premiumRooms - premiumGuests.length;
 
-    const economyGuestsWithoutUpgraded: number[] = fillEconomyRooms({
-      economyGuests,
-      premiumGuests,
-      emptyEconomyRooms,
-      emptyPremiumRooms,
-    });
+    const economyUsage: number = getUsage(
+      fillEconomyRooms({
+        economyGuests,
+        premiumGuests,
+        emptyEconomyRooms,
+        emptyPremiumRooms,
+      }),
+      economyRooms
+    );
 
-    const economyUsage: number = economyGuestsWithoutUpgraded
-      .sort(sortNumbersDescending)
-      .slice(0, economyRooms)
-      .reduce((acc, guest) => acc + guest, 0);
-
-    const premiumUsage: number = fillPremiumRooms({
-      emptyEconomyRooms,
-      emptyPremiumRooms,
-      economyGuests,
-      premiumGuests,
-    })
-      .sort(sortNumbersDescending)
-      .slice(0, premiumRooms)
-      .reduce((acc, guest) => acc + guest, 0);
+    const premiumUsage: number = getUsage(
+      fillPremiumRooms({
+        emptyEconomyRooms,
+        emptyPremiumRooms,
+        economyGuests,
+        premiumGuests,
+      }),
+      premiumRooms
+    );
 
     setEconomyUsage(economyUsage);
     setPremiumUsage(premiumUsage);
