@@ -51,13 +51,13 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
 
     const bookedEconomyGuests: number[] = [
       ...economyGuests.filter(
-        (x) =>
+        (guest: number) =>
           !premiumGuestsWithUpgradedEconomyGuestsOrPremiumGuests({
             emptyEconomyRooms,
             emptyPremiumRooms,
             economyGuests,
             premiumGuests,
-          }).includes(x)
+          }).includes(guest)
       ),
     ]
       .sort(sortNumbersDescending)
