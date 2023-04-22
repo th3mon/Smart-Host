@@ -1,6 +1,5 @@
 import {
   getUsage,
-  isEconomy,
   isPremium,
   pickEconomyGuests,
   pickPremiumGuests,
@@ -9,18 +8,6 @@ import {
 
 const guests = [23, 45, 155, 374, 22, 99, 100, 101, 115, 209];
 describe('Prototype', () => {
-  it('should be an economy', () => {
-    const guest = 56;
-
-    expect(isEconomy(guest)).toBe(true);
-  });
-
-  it('should not be an economy guest', () => {
-    const guest = 123;
-
-    expect(isEconomy(guest)).toBe(false);
-  });
-
   it('should be a premium guest', () => {
     const guest = 123;
 
