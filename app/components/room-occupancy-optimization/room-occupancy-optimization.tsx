@@ -64,9 +64,7 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
   const [economyRooms, setEconomyRooms] = React.useState<number>(0);
   const [economyUsage, setEconomyUsage] = React.useState<number>(0);
 
-  const calculateUsage = (event: { preventDefault: () => {} }): void => {
-    event.preventDefault();
-
+  const calculateUsage: React.FormEventHandler<HTMLFormElement> = (): void => {
     const economyGuests: number[] = pickEconomyGuests(guests);
     const premiumGuests: number[] = pickPremiumGuests(guests);
     const emptyEconomyRooms: number = economyRooms - economyGuests.length;
