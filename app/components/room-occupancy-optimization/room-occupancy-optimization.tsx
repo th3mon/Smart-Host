@@ -16,7 +16,7 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
   const upgradeEconomyGuests = (
     economyGuests: number[],
     emptyEconomyRooms: number
-  ) => {
+  ): number[] => {
     return economyGuests
       .sort(sortNumbersDescending)
       .slice(0, emptyEconomyRooms);
@@ -41,7 +41,7 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
       : premiumGuests;
   };
 
-  const calculateUsage = (event: { preventDefault: () => {} }) => {
+  const calculateUsage = (event: { preventDefault: () => {} }): void => {
     event.preventDefault();
 
     const economyGuests: number[] = pickEconomyGuests(guests);
