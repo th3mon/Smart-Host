@@ -1,6 +1,6 @@
 import React from 'react';
-import { pickPremiumGuests, sortNumbersDescending } from '../../prototype';
-import { pickEconomyGuests } from '../../utils';
+import { sortNumbersDescending } from '../../prototype';
+import { pickEconomyGuests, pickPremiumGuests } from '../../utils';
 
 const upgradeEconomyGuests = (
   economyGuests: number[],
