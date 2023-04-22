@@ -5,6 +5,13 @@ import {
   sortNumbersDescending,
 } from '../../prototype';
 
+const upgradeEconomyGuests = (
+  economyGuests: number[],
+  emptyEconomyRooms: number
+): number[] => {
+  return economyGuests.sort(sortNumbersDescending).slice(0, emptyEconomyRooms);
+};
+
 const guestsInitial = [23, 45, 155, 374, 22, 99, 100, 101, 115, 209];
 export const RoomOccupancyOptimization: React.FunctionComponent = () => {
   const [guests] = React.useState<number[]>(guestsInitial);
@@ -12,15 +19,6 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
   const [premiumUsage, setPremiumUsage] = React.useState<number>(0);
   const [economyRooms, setEconomyRooms] = React.useState<number>(0);
   const [economyUsage, setEconomyUsage] = React.useState<number>(0);
-
-  const upgradeEconomyGuests = (
-    economyGuests: number[],
-    emptyEconomyRooms: number
-  ): number[] => {
-    return economyGuests
-      .sort(sortNumbersDescending)
-      .slice(0, emptyEconomyRooms);
-  };
 
   const premiumGuestsWithUpgradedEconomyGuestsOrPremiumGuests = ({
     emptyEconomyRooms,
