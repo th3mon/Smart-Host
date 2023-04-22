@@ -1,7 +1,4 @@
-import { isEconomy, isPremium } from './utils';
-
-export const pickEconomyGuests = (guests: number[]): number[] =>
-  guests.filter(isEconomy);
+import { isPremium } from './utils';
 
 export const pickPremiumGuests = (guests: number[]): number[] =>
   guests.filter(isPremium);
