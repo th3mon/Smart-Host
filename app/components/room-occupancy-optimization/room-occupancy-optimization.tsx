@@ -23,16 +23,18 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
   };
 
   const premiumGuestsWithUpgradedEconomyGuestsOrPremiumGuests = ({
-    filledEconomyRooms,
+    emptyEconomyRooms,
     emptyPremiumRooms,
     economyGuests,
     premiumGuests,
   }: {
-    filledEconomyRooms: boolean;
+    emptyEconomyRooms: number;
     emptyPremiumRooms: number;
     economyGuests: number[];
     premiumGuests: number[];
   }): number[] => {
+    const filledEconomyRooms: boolean = emptyEconomyRooms <= 0;
+
     return filledEconomyRooms && emptyPremiumRooms > 0
       ? [
           ...premiumGuests,
@@ -48,13 +50,12 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
     const premiumGuests: number[] = pickPremiumGuests(guests);
     const emptyEconomyRooms: number = economyRooms - economyGuests.length;
     const emptyPremiumRooms: number = premiumRooms - premiumGuests.length;
-    const filledEconomyRooms: boolean = emptyEconomyRooms <= 0;
 
     const bookedEconomyGuests: number[] = [
       ...economyGuests.filter(
         (x) =>
           !premiumGuestsWithUpgradedEconomyGuestsOrPremiumGuests({
-            filledEconomyRooms,
+            emptyEconomyRooms,
             emptyPremiumRooms,
             economyGuests,
             premiumGuests,
@@ -71,7 +72,7 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
 
     const premiumUsage: number =
       premiumGuestsWithUpgradedEconomyGuestsOrPremiumGuests({
-        filledEconomyRooms,
+        emptyEconomyRooms,
         emptyPremiumRooms,
         economyGuests,
         premiumGuests,
