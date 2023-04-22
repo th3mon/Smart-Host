@@ -1,61 +1,12 @@
 import React from 'react';
-import {
-  pickEconomyGuests,
-  pickPremiumGuests,
-  sortNumbersDescending,
-  upgradeEconomyGuests,
-} from '../../utils';
 
-const fillPremiumRooms = ({
-  emptyEconomyRooms,
-  emptyPremiumRooms,
-  economyGuests,
-  premiumGuests,
-}: {
-  emptyEconomyRooms: number;
-  emptyPremiumRooms: number;
-  economyGuests: number[];
-  premiumGuests: number[];
-}): number[] => {
-  const filledEconomyRooms: boolean = emptyEconomyRooms <= 0;
-
-  return filledEconomyRooms && emptyPremiumRooms > 0
-    ? [
-        ...premiumGuests,
-        ...upgradeEconomyGuests(economyGuests, emptyPremiumRooms),
-      ]
-    : premiumGuests;
-};
+import { pickEconomyGuests } from './pick-economy-guests';
+import { pickPremiumGuests } from './pick-premium-guests';
+import { fillPremiumRooms } from './fill-premium-rooms';
+import { fillEconomyRooms } from './fill-economy-rooms';
+import { getUsage } from './get-usage';
 
 const guestsInitial = [23, 45, 155, 374, 22, 99, 100, 101, 115, 209];
-
-const fillEconomyRooms = ({
-  economyGuests,
-  premiumGuests,
-  emptyEconomyRooms,
-  emptyPremiumRooms,
-}: {
-  economyGuests: number[];
-  premiumGuests: number[];
-  emptyEconomyRooms: number;
-  emptyPremiumRooms: number;
-}) =>
-  economyGuests.filter(
-    (guest: number) =>
-      !fillPremiumRooms({
-        economyGuests,
-        premiumGuests,
-        emptyEconomyRooms,
-        emptyPremiumRooms,
-      }).includes(guest)
-  );
-
-const getUsage = (guests: number[], rooms: number): number => {
-  return guests
-    .sort(sortNumbersDescending)
-    .slice(0, rooms)
-    .reduce((acc, guest) => acc + guest, 0);
-};
 
 export const RoomOccupancyOptimization: React.FunctionComponent = () => {
   const [guests] = React.useState<number[]>(guestsInitial);
