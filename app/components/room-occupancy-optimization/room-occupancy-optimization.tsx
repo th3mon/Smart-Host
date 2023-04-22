@@ -3,8 +3,8 @@ import {
   pickEconomyGuests,
   pickPremiumGuests,
   sortNumbersDescending,
+  upgradeEconomyGuests,
 } from '../../utils';
-import { upgradeEconomyGuests } from './upgrade-economy-guests';
 
 const fillPremiumRooms = ({
   emptyEconomyRooms,

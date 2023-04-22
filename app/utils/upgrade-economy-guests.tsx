@@ -1,4 +1,4 @@
-import { sortNumbersDescending } from '../../utils';
+import { sortNumbersDescending } from './index';
 
 export const upgradeEconomyGuests = (
   economyGuests: number[],
