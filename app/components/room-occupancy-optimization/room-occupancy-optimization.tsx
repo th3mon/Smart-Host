@@ -12,6 +12,27 @@ const upgradeEconomyGuests = (
   return economyGuests.sort(sortNumbersDescending).slice(0, emptyEconomyRooms);
 };
 
+const premiumGuestsWithUpgradedEconomyGuestsOrPremiumGuests = ({
+  emptyEconomyRooms,
+  emptyPremiumRooms,
+  economyGuests,
+  premiumGuests,
+}: {
+  emptyEconomyRooms: number;
+  emptyPremiumRooms: number;
+  economyGuests: number[];
+  premiumGuests: number[];
+}): number[] => {
+  const filledEconomyRooms: boolean = emptyEconomyRooms <= 0;
+
+  return filledEconomyRooms && emptyPremiumRooms > 0
+    ? [
+        ...premiumGuests,
+        ...upgradeEconomyGuests(economyGuests, emptyPremiumRooms),
+      ]
+    : premiumGuests;
+};
+
 const guestsInitial = [23, 45, 155, 374, 22, 99, 100, 101, 115, 209];
 export const RoomOccupancyOptimization: React.FunctionComponent = () => {
   const [guests] = React.useState<number[]>(guestsInitial);
@@ -19,27 +40,6 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
   const [premiumUsage, setPremiumUsage] = React.useState<number>(0);
   const [economyRooms, setEconomyRooms] = React.useState<number>(0);
   const [economyUsage, setEconomyUsage] = React.useState<number>(0);
-
-  const premiumGuestsWithUpgradedEconomyGuestsOrPremiumGuests = ({
-    emptyEconomyRooms,
-    emptyPremiumRooms,
-    economyGuests,
-    premiumGuests,
-  }: {
-    emptyEconomyRooms: number;
-    emptyPremiumRooms: number;
-    economyGuests: number[];
-    premiumGuests: number[];
-  }): number[] => {
-    const filledEconomyRooms: boolean = emptyEconomyRooms <= 0;
-
-    return filledEconomyRooms && emptyPremiumRooms > 0
-      ? [
-          ...premiumGuests,
-          ...upgradeEconomyGuests(economyGuests, emptyPremiumRooms),
-        ]
-      : premiumGuests;
-  };
 
   const calculateUsage = (event: { preventDefault: () => {} }): void => {
     event.preventDefault();
