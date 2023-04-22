@@ -1,6 +1,5 @@
 import {
   getUsage,
-  isPremium,
   pickEconomyGuests,
   pickPremiumGuests,
   sortNumbersDescending,
@@ -8,18 +7,6 @@ import {
 
 const guests = [23, 45, 155, 374, 22, 99, 100, 101, 115, 209];
 describe('Prototype', () => {
-  it('should be a premium guest', () => {
-    const guest = 123;
-
-    expect(isPremium(guest)).toBe(true);
-  });
-
-  it('should not be a premium guest', () => {
-    const guest = 56;
-
-    expect(isPremium(guest)).toBe(false);
-  });
-
   it('should be pick economy quests', () => {
     const guests = [23, 45, 155, 374, 22, 99, 100, 101, 115, 209];
     const economyGuests = [23, 45, 22, 99];

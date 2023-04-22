@@ -1,6 +1,4 @@
-import { isEconomy } from './utils/is-economy';
-
-export const isPremium = (guest: number): boolean => guest >= 100;
+import { isEconomy, isPremium } from './utils';
 
 export const pickEconomyGuests = (guests: number[]): number[] =>
   guests.filter(isEconomy);
