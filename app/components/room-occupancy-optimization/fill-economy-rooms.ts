@@ -1,22 +1,20 @@
 import { fillPremiumRooms } from './fill-premium-rooms';
+import { EmptyRooms } from '@/app/components/room-occupancy-optimization/calculate-empty-rooms';
 
 export const fillEconomyRooms = ({
   economyGuests,
   premiumGuests,
-  emptyEconomyRooms,
-  emptyPremiumRooms,
+  emptyRooms,
 }: {
   economyGuests: number[];
   premiumGuests: number[];
-  emptyEconomyRooms: number;
-  emptyPremiumRooms: number;
+  emptyRooms: EmptyRooms;
 }) =>
   economyGuests.filter(
     (guest: number) =>
       !fillPremiumRooms({
         economyGuests,
         premiumGuests,
-        emptyEconomyRooms,
-        emptyPremiumRooms,
+        emptyRooms,
       }).includes(guest)
   );

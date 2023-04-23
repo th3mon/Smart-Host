@@ -3,10 +3,11 @@ import { fillPremiumRooms } from './fill-premium-rooms';
 import { fillEconomyRooms } from './fill-economy-rooms';
 import { getRoomsUsage } from './get-rooms-usage';
 import { pickGuests } from '@/app/components/room-occupancy-optimization/pick-guests';
+import { calculateEmptyRooms } from '@/app/components/room-occupancy-optimization/calculate-empty-rooms';
 
 const guestsInitial = [23, 45, 155, 374, 22, 99, 100, 101, 115, 209];
 
-type Rooms = {
+export type Rooms = {
   premium: number;
   economy: number;
 };
@@ -29,25 +30,22 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
 
   const calculateUsage: React.FormEventHandler<HTMLFormElement> = (): void => {
     const { economyGuests, premiumGuests } = pickGuests(guests);
-    const emptyEconomyRooms: number = rooms.economy - economyGuests.length;
-    const emptyPremiumRooms: number = rooms.premium - premiumGuests.length;
+    const emptyRooms = calculateEmptyRooms(premiumGuests, economyGuests, rooms);
 
     const economyRoomsUsage: number = getRoomsUsage(
       fillEconomyRooms({
         economyGuests,
         premiumGuests,
-        emptyEconomyRooms,
-        emptyPremiumRooms,
+        emptyRooms,
       }),
       rooms.economy
     );
 
     const premiumRoomsUsage: number = getRoomsUsage(
       fillPremiumRooms({
-        emptyEconomyRooms,
-        emptyPremiumRooms,
         economyGuests,
         premiumGuests,
+        emptyRooms,
       }),
       rooms.premium
     );
