@@ -1,16 +1,16 @@
 import { Rooms } from './room-occupancy-optimization';
+import { Guests } from './pick-guests';
 
 export type EmptyRooms = {
   premium: number;
   economy: number;
 };
 export const calculateEmptyRooms = (
-  premiumGuests: number[],
-  economyGuests: number[],
+  guests: Guests,
   rooms: Rooms
 ): EmptyRooms => {
   return {
-    premium: rooms.premium - premiumGuests.length,
-    economy: rooms.economy - economyGuests.length,
+    premium: rooms.premium - guests.premium.length,
+    economy: rooms.economy - guests.economy.length,
   };
 };

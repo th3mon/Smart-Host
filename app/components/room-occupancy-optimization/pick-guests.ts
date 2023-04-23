@@ -1,11 +1,14 @@
 import { pickEconomyGuests } from './pick-economy-guests';
 import { pickPremiumGuests } from './pick-premium-guests';
 
-export const pickGuests = (
-  guests: number[]
-): { economyGuests: number[]; premiumGuests: number[] } => {
+export type Guests = {
+  economy: number[];
+  premium: number[];
+};
+
+export const pickGuests = (guests: number[]): Guests => {
   return {
-    economyGuests: pickEconomyGuests(guests),
-    premiumGuests: pickPremiumGuests(guests),
+    economy: pickEconomyGuests(guests),
+    premium: pickPremiumGuests(guests),
   };
 };
