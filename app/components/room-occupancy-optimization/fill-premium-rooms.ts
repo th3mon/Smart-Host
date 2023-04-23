@@ -8,13 +8,10 @@ export const fillPremiumRooms = ({
 }: {
   guests: Guests;
   emptyRooms: EmptyRooms;
-}): number[] => {
-  const filledEconomyRooms: boolean = emptyRooms.economy <= 0;
-
-  return filledEconomyRooms && emptyRooms.premium > 0
+}): number[] =>
+  !emptyRooms.economy && emptyRooms.premium
     ? [
         ...guests.premium,
         ...upgradeEconomyGuests(guests.economy, emptyRooms.premium),
       ]
     : guests.premium;
-};
