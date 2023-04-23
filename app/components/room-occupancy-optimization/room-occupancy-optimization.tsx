@@ -4,45 +4,62 @@ import { pickEconomyGuests } from './pick-economy-guests';
 import { pickPremiumGuests } from './pick-premium-guests';
 import { fillPremiumRooms } from './fill-premium-rooms';
 import { fillEconomyRooms } from './fill-economy-rooms';
-import { getUsage } from './get-usage';
+import { getRoomsUsage } from './get-rooms-usage';
 
 const guestsInitial = [23, 45, 155, 374, 22, 99, 100, 101, 115, 209];
 
+type Rooms = {
+  premium: number;
+  economy: number;
+};
+
+type RoomsUsage = {
+  premium: number;
+  economy: number;
+};
+
 export const RoomOccupancyOptimization: React.FunctionComponent = () => {
   const [guests] = React.useState<number[]>(guestsInitial);
-  const [premiumRooms, setPremiumRooms] = React.useState<number>(0);
-  const [premiumUsage, setPremiumUsage] = React.useState<number>(0);
-  const [economyRooms, setEconomyRooms] = React.useState<number>(0);
-  const [economyUsage, setEconomyUsage] = React.useState<number>(0);
+  const [rooms, setRooms] = React.useState<Rooms>({
+    premium: 0,
+    economy: 0,
+  });
+  const [roomsUsage, setRoomsUsage] = React.useState<RoomsUsage>({
+    premium: 0,
+    economy: 0,
+  });
 
   const calculateUsage: React.FormEventHandler<HTMLFormElement> = (): void => {
     const economyGuests: number[] = pickEconomyGuests(guests);
     const premiumGuests: number[] = pickPremiumGuests(guests);
-    const emptyEconomyRooms: number = economyRooms - economyGuests.length;
-    const emptyPremiumRooms: number = premiumRooms - premiumGuests.length;
+    const emptyEconomyRooms: number = rooms.economy - economyGuests.length;
+    const emptyPremiumRooms: number = rooms.premium - premiumGuests.length;
 
-    const economyUsage: number = getUsage(
+    const economyRoomsUsage: number = getRoomsUsage(
       fillEconomyRooms({
         economyGuests,
         premiumGuests,
         emptyEconomyRooms,
         emptyPremiumRooms,
       }),
-      economyRooms
+      rooms.economy
     );
 
-    const premiumUsage: number = getUsage(
+    const premiumRoomsUsage: number = getRoomsUsage(
       fillPremiumRooms({
         emptyEconomyRooms,
         emptyPremiumRooms,
         economyGuests,
         premiumGuests,
       }),
-      premiumRooms
+      rooms.premium
     );
 
-    setEconomyUsage(economyUsage);
-    setPremiumUsage(premiumUsage);
+    setRoomsUsage({
+      ...roomsUsage,
+      premium: premiumRoomsUsage,
+      economy: economyRoomsUsage,
+    });
   };
 
   return (
@@ -63,20 +80,20 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
             className="premium-usage__rooms-input"
             id="premium-usage__rooms-input"
             type="number"
-            value={premiumRooms}
+            value={rooms.premium}
             onChange={(event) => {
-              setPremiumRooms(Number(event?.target?.value));
+              setRooms({ ...rooms, premium: Number(event?.target?.value) });
             }}
           />
 
-          <p data-testid="premium-test">{premiumRooms}</p>
+          <p data-testid="premium-test">{rooms.premium}</p>
         </div>
 
         <div
           className="premium-usage__value"
           data-testid="premium-usage__value"
         >
-          {premiumUsage + ' EUR'}
+          {roomsUsage.premium + ' EUR'}
         </div>
       </div>
 
@@ -96,20 +113,20 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
             className="economy-usage__rooms-input"
             id="economy-usage__rooms-input"
             type="number"
-            value={economyRooms}
+            value={rooms.economy}
             onChange={(event) => {
-              setEconomyRooms(Number(event?.target?.value));
+              setRooms({ ...rooms, economy: Number(event?.target?.value) });
             }}
           />
 
-          <p data-testid="economy-test">{economyRooms}</p>
+          <p data-testid="economy-test">{rooms.economy}</p>
         </div>
 
         <div
           className="economy-usage__value"
           data-testid="economy-usage__value"
         >
-          {economyUsage + ' EUR'}
+          {roomsUsage.economy + ' EUR'}
         </div>
       </div>
 
