@@ -1,6 +1,6 @@
 import React from 'react';
 import { fillPremiumRooms } from './fill-premium-rooms';
-import { fillEconomyRooms } from './fill-economy-rooms';
+import { dropUpgradedGuests } from './drop-upgraded-guests';
 import { getRoomsUsage } from './get-rooms-usage';
 import { Guests, pickGuests } from './pick-guests';
 import { calculateEmptyRooms } from './calculate-empty-rooms';
@@ -32,7 +32,7 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
     const emptyRooms = calculateEmptyRooms(guests, rooms);
 
     const economyRoomsUsage: number = getRoomsUsage(
-      fillEconomyRooms({
+      dropUpgradedGuests({
         guests,
         emptyRooms,
       }),
