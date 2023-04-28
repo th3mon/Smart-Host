@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { FormEvent } from 'react';
 import { fillPremiumRooms } from './fill-premium-rooms';
 import { dropUpgradedGuests } from './drop-upgraded-guests';
 import { getRoomsUsage } from './get-rooms-usage';
@@ -18,16 +19,27 @@ type RoomsUsage = {
 };
 
 export const RoomOccupancyOptimization: React.FunctionComponent = () => {
-  const [rooms, setRooms] = React.useState<Rooms>({
-    premium: 0,
-    economy: 0,
-  });
   const [roomsUsage, setRoomsUsage] = React.useState<RoomsUsage>({
     premium: 0,
     economy: 0,
   });
+  const premiumRoomsInputRef = React.useRef<HTMLInputElement>(null);
+  const economyRoomsInputRef = React.useRef<HTMLInputElement>(null);
 
-  const calculateUsage: React.FormEventHandler<HTMLFormElement> = (): void => {
+  const calculateUsage: React.FormEventHandler<HTMLFormElement> = (
+    event: FormEvent<HTMLFormElement>
+  ): void => {
+    event.preventDefault();
+
+    if (!premiumRoomsInputRef.current || !economyRoomsInputRef.current) {
+      return;
+    }
+
+    const rooms: Rooms = {
+      premium: Number(premiumRoomsInputRef.current.value),
+      economy: Number(economyRoomsInputRef.current.value),
+    };
+
     const guests: Guests = pickGuests(guestsInitial);
     const emptyRooms = calculateEmptyRooms(guests, rooms);
 
@@ -69,13 +81,10 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
             Premium Rooms
           </label>
           <input
-            className="premium-usage__rooms-input"
+            className="premium-usage__rooms-input text-black"
             id="premium-usage__rooms-input"
             type="number"
-            value={rooms.premium}
-            onChange={(event) => {
-              setRooms({ ...rooms, premium: Number(event?.target?.value) });
-            }}
+            ref={premiumRoomsInputRef}
           />
 
           <p data-testid="premium-test">{rooms.premium}</p>
@@ -102,13 +111,10 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
             Economy Rooms
           </label>
           <input
-            className="economy-usage__rooms-input"
+            className="economy-usage__rooms-input text-black"
             id="economy-usage__rooms-input"
             type="number"
-            value={rooms.economy}
-            onChange={(event) => {
-              setRooms({ ...rooms, economy: Number(event?.target?.value) });
-            }}
+            ref={economyRoomsInputRef}
           />
 
           <p data-testid="economy-test">{rooms.economy}</p>
