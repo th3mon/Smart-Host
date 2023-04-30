@@ -67,18 +67,18 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
   };
 
   return (
-    <section className="room-occupancy-optimization bg-orange-400 rounded-xl py-8 px-10 text-gray-800">
-      <header className="room-occupancy-optimization__header text-center text-2xl mb-5">
-        <h2 className="room-occupancy-optimization__title">
+    <section className="room-occupancy-optimization bg-gray-100 rounded-xl py-7 px-7 text-gray-800">
+      <header className="room-occupancy-optimization__header mb-5">
+        <h2 className="room-occupancy-optimization__title font-bold text-2xl capitalize">
           Room occupancy optimization
         </h2>
       </header>
       <form
         onSubmit={calculateUsage}
-        className="grid grid-cols-2 grid-rows-2 gap-3 justify-center"
+        className="flex flex-col lg:grid lg:grid-cols-2"
       >
         <div className="room-occupancy-optimization__premium-usage premium-usage">
-          <div className="premium-usage__rooms">
+          <div className="premium-usage__rooms flex flex-col">
             <label
               htmlFor="premium-usage__rooms-input"
               className="premium-usage__rooms-label"
@@ -86,9 +86,10 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
               Premium Rooms&nbsp;
             </label>
             <input
-              className="premium-usage__rooms-input text-black"
+              className="premium-usage__rooms-input text-gray-600 border border-gray-400 leading-8 px-2 my-2 focus:border-2 focus:border-gray-700 focus:mb-1.5 focus:outline-none"
               id="premium-usage__rooms-input"
               type="number"
+              min="0"
               ref={premiumRoomsInputRef}
             />
           </div>
@@ -104,8 +105,8 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
           </h3>
         </div>
 
-        <div className="room-occupancy-optimization__economy-usage">
-          <div className="economy-usage__rooms">
+        <div className="room-occupancy-optimization__economy-usage mb-4">
+          <div className="economy-usage__rooms flex flex-col">
             <label
               htmlFor="economy-usage__rooms-input"
               className="economy-usage__rooms-label"
@@ -113,9 +114,10 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
               Economy Rooms&nbsp;
             </label>
             <input
-              className="economy-usage__rooms-input text-black"
+              className="economy-usage__rooms-input text-gray-600 border border-gray-400 leading-8 px-2 my-2 focus:border-2 focus:border-gray-700 focus:mb-1.5 focus:outline-none"
               id="economy-usage__rooms-input"
               type="number"
+              min="0"
               ref={economyRoomsInputRef}
             />
           </div>
@@ -132,7 +134,7 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
         </div>
 
         <div className="col-span-2 flex justify-center">
-          <button className="room-occupancy-optimisation__button rounded-3xl bg-black text-orange-400 px-8 hover:bg-gray-800 active:translate-y-0.5">
+          <button className="room-occupancy-optimisation__button bg-pink-600 text-white font-bold min-w-full py-2 capitalize hover:bg-pink-700 transition active:translate-y-0.5">
             calculate usage
           </button>
         </div>
