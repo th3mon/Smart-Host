@@ -75,7 +75,7 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
       </header>
       <form
         onSubmit={calculateUsage}
-        className="flex flex-col lg:grid lg:grid-cols-2"
+        className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-3"
       >
         <div className="room-occupancy-optimization__premium-usage premium-usage">
           <div className="premium-usage__rooms flex flex-col">
@@ -93,16 +93,6 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
               ref={premiumRoomsInputRef}
             />
           </div>
-
-          <h3 className="premium-usage__title text-right">
-            <span>Usage&nbsp;</span>
-            <span
-              className="premium-usage__value"
-              data-testid="premium-usage__value"
-            >
-              {roomsUsage.premium + ' EUR'}
-            </span>
-          </h3>
         </div>
 
         <div className="room-occupancy-optimization__economy-usage mb-4">
@@ -121,16 +111,6 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
               ref={economyRoomsInputRef}
             />
           </div>
-
-          <div className="economy-usage__title text-right">
-            <span>Usage&nbsp;</span>
-            <span
-              className="economy-usage__value"
-              data-testid="economy-usage__value"
-            >
-              {roomsUsage.economy + ' EUR'}
-            </span>
-          </div>
         </div>
 
         <div className="col-span-2 flex justify-center">
@@ -139,6 +119,35 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
           </button>
         </div>
       </form>
+
+      <footer className="room-occupancy-optimization__calculated-usage calculated-usage mt-8">
+        <h2 className="calculated-usage__header capitalize text-xl mb-4">
+          Calculated usage&nbsp;
+        </h2>
+
+        <div className="calculated-usage__values">
+          <h3 className="calculated-usage-value__header">Premium&nbsp;</h3>
+          <p
+            className="calculated-usage__value calculated-usage__premium text-right font-bold"
+            data-testid="premium-usage-value"
+          >
+            {roomsUsage.premium + ' EUR'}
+          </p>
+
+          <h3 className="calculated-usage-value__header">Economy&nbsp;</h3>
+          <p
+            className="calculated-usage__value calculated-usage__economy text-right font-bold"
+            data-testid="economy-usage-value"
+          >
+            {roomsUsage.economy + ' EUR'}
+          </p>
+
+          <h3 className="calculated-usage-value__header">Summary&nbsp;</h3>
+          <p className="calculated-usage__value calculated-usage__summary text-right font-bold">
+            {roomsUsage.premium + roomsUsage.economy + ' EUR'}
+          </p>
+        </div>
+      </footer>
     </section>
   );
 };

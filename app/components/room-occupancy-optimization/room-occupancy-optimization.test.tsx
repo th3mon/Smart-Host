@@ -10,14 +10,14 @@ describe('Room Occupancy Optimization', () => {
 
   it('should render premium usage', () => {
     render(<RoomOccupancyOptimization />);
-    const premiumUsage = screen.getByText(/premium usage/i);
+    const premiumUsage = screen.getByTestId('premium-usage-value');
 
     expect(premiumUsage).toBeInTheDocument();
   });
 
   it('should render economy usage', () => {
     render(<RoomOccupancyOptimization />);
-    const economyUsage = screen.getByText(/economy usage/i);
+    const economyUsage = screen.getByTestId('economy-usage-value');
 
     expect(economyUsage).toBeInTheDocument();
   });
@@ -26,8 +26,8 @@ describe('Room Occupancy Optimization', () => {
     const premiumRooms = 3;
     const economyRooms = 3;
     render(<RoomOccupancyOptimization />);
-    const premiumUsage = screen.getByTestId('premium-usage__value');
-    const economyUsage = screen.getByTestId('economy-usage__value');
+    const premiumUsage = screen.getByTestId('premium-usage-value');
+    const economyUsage = screen.getByTestId('economy-usage-value');
 
     await userEvent.type(
       screen.getByLabelText(/Premium Rooms/i),
@@ -49,8 +49,8 @@ describe('Room Occupancy Optimization', () => {
     const premiumRooms = 7;
     const economyRooms = 5;
     render(<RoomOccupancyOptimization />);
-    const premiumUsage = screen.getByTestId('premium-usage__value');
-    const economyUsage = screen.getByTestId('economy-usage__value');
+    const premiumUsage = screen.getByTestId('premium-usage-value');
+    const economyUsage = screen.getByTestId('economy-usage-value');
 
     await userEvent.type(
       screen.getByLabelText(/Premium Rooms/i),
@@ -72,8 +72,8 @@ describe('Room Occupancy Optimization', () => {
     const premiumRooms = 2;
     const economyRooms = 7;
     render(<RoomOccupancyOptimization />);
-    const premiumUsage = screen.getByTestId('premium-usage__value');
-    const economyUsage = screen.getByTestId('economy-usage__value');
+    const premiumUsage = screen.getByTestId('premium-usage-value');
+    const economyUsage = screen.getByTestId('economy-usage-value');
 
     await userEvent.type(
       screen.getByLabelText(/Premium Rooms/i),
@@ -95,8 +95,8 @@ describe('Room Occupancy Optimization', () => {
     const premiumRooms = 7;
     const economyRooms = 1;
     render(<RoomOccupancyOptimization />);
-    const premiumUsage = screen.getByTestId('premium-usage__value');
-    const economyUsage = screen.getByTestId('economy-usage__value');
+    const premiumUsage = screen.getByTestId('premium-usage-value');
+    const economyUsage = screen.getByTestId('economy-usage-value');
 
     await userEvent.type(
       screen.getByLabelText(/Premium Rooms/i),
