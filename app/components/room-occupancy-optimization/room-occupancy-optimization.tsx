@@ -73,10 +73,7 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
           Room occupancy optimization
         </h2>
       </header>
-      <form
-        onSubmit={calculateUsage}
-        className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-3"
-      >
+      <form onSubmit={calculateUsage} className="flex flex-col">
         <div className="room-occupancy-optimization__premium-usage premium-usage">
           <div className="premium-usage__rooms flex flex-col">
             <label
