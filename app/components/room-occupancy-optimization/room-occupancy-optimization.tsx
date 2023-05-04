@@ -1,12 +1,10 @@
 'use client';
-import React, { FormEvent, useEffect } from 'react';
+import React, { FormEvent } from 'react';
 import { fillPremiumRooms } from './fill-premium-rooms';
 import { dropUpgradedGuests } from './drop-upgraded-guests';
 import { getRoomsUsage } from './get-rooms-usage';
 import { Guests, pickGuests } from './pick-guests';
 import { calculateEmptyRooms } from './calculate-empty-rooms';
-
-const guestsInitial = [23, 45, 155, 374, 22, 99, 100, 101, 115, 209];
 
 export type Rooms = {
   premium: number;
@@ -18,31 +16,19 @@ type RoomsUsage = {
   economy: number;
 };
 
-export const RoomOccupancyOptimization: React.FunctionComponent = () => {
-  const url: string =
-    'https://gist.githubusercontent.com/lwhiteley/b01cf0964e19704df06fccf44d0c3c4d/raw/580a0aa9675985674dd1a70ffa799a4288c94bb3/guests.json';
-  const [guestsInitial, setGuestsInitial] = React.useState<number[] | null>(
-    null
-  );
+export interface RoomOccupancyOptimizationProps {
+  guests: number[];
+}
+
+export const RoomOccupancyOptimization: React.FunctionComponent<
+  RoomOccupancyOptimizationProps
+> = ({ guests: guestsInitial }) => {
   const [roomsUsage, setRoomsUsage] = React.useState<RoomsUsage>({
     premium: 0,
     economy: 0,
   });
   const premiumRoomsInputRef = React.useRef<HTMLInputElement>(null);
   const economyRoomsInputRef = React.useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const request: Response = await fetch(url);
-      const json: number[] = await request.json();
-
-      setGuestsInitial(() => json);
-    };
-
-    fetchData().catch((error: Error) => {
-      console.error(error);
-    });
-  }, [url]);
 
   const calculateUsage: React.FormEventHandler<HTMLFormElement> = (
     event: FormEvent<HTMLFormElement>
