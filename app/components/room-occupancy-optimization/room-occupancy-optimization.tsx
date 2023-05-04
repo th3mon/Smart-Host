@@ -6,8 +6,6 @@ import { getRoomsUsage } from './get-rooms-usage';
 import { Guests, pickGuests } from './pick-guests';
 import { calculateEmptyRooms } from './calculate-empty-rooms';
 
-const guestsInitial = [23, 45, 155, 374, 22, 99, 100, 101, 115, 209];
-
 export type Rooms = {
   premium: number;
   economy: number;
@@ -18,7 +16,13 @@ type RoomsUsage = {
   economy: number;
 };
 
-export const RoomOccupancyOptimization: React.FunctionComponent = () => {
+export interface RoomOccupancyOptimizationProps {
+  guests: number[];
+}
+
+export const RoomOccupancyOptimization: React.FunctionComponent<
+  RoomOccupancyOptimizationProps
+> = ({ guests: guestsInitial }) => {
   const [roomsUsage, setRoomsUsage] = React.useState<RoomsUsage>({
     premium: 0,
     economy: 0,
@@ -31,7 +35,11 @@ export const RoomOccupancyOptimization: React.FunctionComponent = () => {
   ): void => {
     event.preventDefault();
 
-    if (!premiumRoomsInputRef.current || !economyRoomsInputRef.current) {
+    if (
+      !premiumRoomsInputRef.current ||
+      !economyRoomsInputRef.current ||
+      !guestsInitial
+    ) {
       return;
     }
 

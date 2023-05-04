@@ -3,20 +3,21 @@ import userEvent from '@testing-library/user-event';
 
 import { RoomOccupancyOptimization } from './room-occupancy-optimization';
 
+const guests = [23, 45, 155, 374, 22, 99, 100, 101, 115, 209];
 describe('Room Occupancy Optimization', () => {
   it('should render', () => {
-    render(<RoomOccupancyOptimization />);
+    render(<RoomOccupancyOptimization guests={guests} />);
   });
 
   it('should render premium usage', () => {
-    render(<RoomOccupancyOptimization />);
+    render(<RoomOccupancyOptimization guests={guests} />);
     const premiumUsage = screen.getByTestId('premium-usage-value');
 
     expect(premiumUsage).toBeInTheDocument();
   });
 
   it('should render economy usage', () => {
-    render(<RoomOccupancyOptimization />);
+    render(<RoomOccupancyOptimization guests={guests} />);
     const economyUsage = screen.getByTestId('economy-usage-value');
 
     expect(economyUsage).toBeInTheDocument();
@@ -25,7 +26,7 @@ describe('Room Occupancy Optimization', () => {
   it('[TEST 1] should have 738 EUR premium usage and 167 EUR economy usage', async () => {
     const premiumRooms = 3;
     const economyRooms = 3;
-    render(<RoomOccupancyOptimization />);
+    render(<RoomOccupancyOptimization guests={guests} />);
     const premiumUsage = screen.getByTestId('premium-usage-value');
     const economyUsage = screen.getByTestId('economy-usage-value');
 
@@ -48,7 +49,7 @@ describe('Room Occupancy Optimization', () => {
   it('[TEST 2] should have 1054 EUR premium usage and 189 EUR economy usage', async () => {
     const premiumRooms = 7;
     const economyRooms = 5;
-    render(<RoomOccupancyOptimization />);
+    render(<RoomOccupancyOptimization guests={guests} />);
     const premiumUsage = screen.getByTestId('premium-usage-value');
     const economyUsage = screen.getByTestId('economy-usage-value');
 
@@ -71,7 +72,7 @@ describe('Room Occupancy Optimization', () => {
   it('[TEST 3] should have 583 EUR premium usage and 189 EUR economy usage', async () => {
     const premiumRooms = 2;
     const economyRooms = 7;
-    render(<RoomOccupancyOptimization />);
+    render(<RoomOccupancyOptimization guests={guests} />);
     const premiumUsage = screen.getByTestId('premium-usage-value');
     const economyUsage = screen.getByTestId('economy-usage-value');
 
@@ -94,7 +95,7 @@ describe('Room Occupancy Optimization', () => {
   it('[TEST 4] should have 1153 EUR premium usage and 45 EUR economy usage', async () => {
     const premiumRooms = 7;
     const economyRooms = 1;
-    render(<RoomOccupancyOptimization />);
+    render(<RoomOccupancyOptimization guests={guests} />);
     const premiumUsage = screen.getByTestId('premium-usage-value');
     const economyUsage = screen.getByTestId('economy-usage-value');
 
