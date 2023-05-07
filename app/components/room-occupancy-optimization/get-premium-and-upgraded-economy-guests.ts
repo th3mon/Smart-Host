@@ -2,7 +2,7 @@ import { upgradeEconomyGuests } from './upgrade-economy-guests';
 import { EmptyRooms } from '@/app/components/room-occupancy-optimization/calculate-empty-rooms';
 import { Guests } from './pick-guests';
 
-export const fillPremiumRooms = ({
+export const getPremiumAndUpgradedEconomyGuests = ({
   guests,
   emptyRooms,
 }: {

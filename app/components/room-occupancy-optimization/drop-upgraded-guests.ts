@@ -1,4 +1,4 @@
-import { fillPremiumRooms } from './fill-premium-rooms';
+import { getPremiumAndUpgradedEconomyGuests } from './get-premium-and-upgraded-economy-guests';
 import { EmptyRooms } from './calculate-empty-rooms';
 import { Guests } from './pick-guests';
 
@@ -11,7 +11,7 @@ export const dropUpgradedGuests = ({
 }) =>
   guests.economy.filter(
     (guest: number) =>
-      !fillPremiumRooms({
+      !getPremiumAndUpgradedEconomyGuests({
         guests,
         emptyRooms,
       }).includes(guest)

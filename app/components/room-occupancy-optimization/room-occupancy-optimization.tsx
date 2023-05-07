@@ -1,6 +1,6 @@
 'use client';
 import React, { FormEvent } from 'react';
-import { fillPremiumRooms } from './fill-premium-rooms';
+import { getPremiumAndUpgradedEconomyGuests } from './get-premium-and-upgraded-economy-guests';
 import { dropUpgradedGuests } from './drop-upgraded-guests';
 import { getRoomsUsage } from './get-rooms-usage';
 import { Guests, pickGuests } from './pick-guests';
@@ -60,7 +60,7 @@ export const RoomOccupancyOptimization: React.FunctionComponent<
     );
 
     const premiumRoomsUsage: number = getRoomsUsage(
-      fillPremiumRooms({
+      getPremiumAndUpgradedEconomyGuests({
         guests,
         emptyRooms,
       }),
