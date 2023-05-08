@@ -4,7 +4,7 @@ import { getPremiumAndUpgradedEconomyGuests } from './get-premium-and-upgraded-e
 import { dropUpgradedGuests } from './drop-upgraded-guests';
 import { getRoomsUsage } from './get-rooms-usage';
 import { Guests, pickGuests } from './pick-guests';
-import { calculateEmptyRooms } from './calculate-empty-rooms';
+import { calculateEmptyRooms, EmptyRooms } from './calculate-empty-rooms';
 
 export type Rooms = {
   premium: number;
@@ -27,8 +27,10 @@ export const RoomOccupancyOptimization: React.FunctionComponent<
     premium: 0,
     economy: 0,
   });
-  const premiumRoomsInputRef = React.useRef<HTMLInputElement>(null);
-  const economyRoomsInputRef = React.useRef<HTMLInputElement>(null);
+  const premiumRoomsInputRef: React.RefObject<HTMLInputElement> =
+    React.useRef<HTMLInputElement>(null);
+  const economyRoomsInputRef: React.RefObject<HTMLInputElement> =
+    React.useRef<HTMLInputElement>(null);
 
   const calculateUsage: React.FormEventHandler<HTMLFormElement> = (
     event: FormEvent<HTMLFormElement>
@@ -49,7 +51,7 @@ export const RoomOccupancyOptimization: React.FunctionComponent<
     };
 
     const guests: Guests = pickGuests(guestsInitial);
-    const emptyRooms = calculateEmptyRooms(guests, rooms);
+    const emptyRooms: EmptyRooms = calculateEmptyRooms(guests, rooms);
 
     const economyRoomsUsage: number = getRoomsUsage(
       dropUpgradedGuests({
