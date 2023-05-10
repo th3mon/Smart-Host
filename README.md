@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Smart Host Coding Challenge
+
+I built a room occupancy optimization tool as a React component.
+
+I used the [Next.js](https://nextjs.org/) framework for two reasons:
+
+1. It allows to use React.
+2. I can use [Vercel](https://vercel.com/) as a hosting platform easily.
+
+Source code is written in TypeScript.
+Design is implemented using Tailwind.
 
 ## Getting Started
 
-First, run the development server:
+### Requirements
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+- Node.js 16.8 or later
+
+### Installation
+
+```sh
+npm ci
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To verify installation, build app and run unit tests.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm run build && npm run test:ci
+```
 
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.ts`.
+### Running app
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+You can run app on your local machine using `dev` script.
 
-## Learn More
+```sh
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Available Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Running app in the dev environment.
+```sh
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Building the application.
 
-## Deploy on Vercel
+```sh
+npm run build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Starting app.
+Do not forget to build the application.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```sh
+npm start
+```
+
+Running unit tests in the watch mode.
+
+```sh
+npm test
+```
+
+Running tests once.
+
+```sh
+npm run test:ci
+```
+
+Lint projects source code.
+
+```sh
+npm run lint
+```
+
+Format source code with Prettier.
+
+```sh
+npm run format
+```
+
+Start Storybook server.
+
+```sh
+npm run storybook
+```
