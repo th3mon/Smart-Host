@@ -10,9 +10,23 @@ I used the [Next.js](https://nextjs.org/) framework for two reasons:
 Source code is written in TypeScript.
 Design is implemented using Tailwind.
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
+
+### Requirements
+
+- Node.js 16.8 or later
+
+### Installation
+
+```sh
+npm ci
+```
+
+To verify installation, build app and run unit tests.
+
+```sh
+npm run build && npm run test:ci
+```
 
 First, run the development server:
 
