@@ -27,3 +27,11 @@ To verify installation, build app and run unit tests.
 ```sh
 npm run build && npm run test:ci
 ```
+
+### Running app
+
+You can run app on your local machine using `dev` script.
+
+```sh
+npm run dev
+```
