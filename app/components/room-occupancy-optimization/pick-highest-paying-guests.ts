@@ -1,6 +1,6 @@
 import { sortNumbersDescending } from '@/app/utils';
 
-export const upgradeEconomyGuests = (
+export const pickHighestPayingGuests = (
   economyGuests: number[],
   emptyEconomyRooms: number
 ): number[] => {
