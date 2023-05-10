@@ -35,3 +35,53 @@ You can run app on your local machine using `dev` script.
 ```sh
 npm run dev
 ```
+
+### Available Scripts
+
+Running app in the dev environment.
+```sh
+npm run dev
+```
+
+Building the application.
+
+```sh
+npm run build
+```
+
+Starting app.
+Do not forget to build the application.
+
+```sh
+npm start
+```
+
+Running unit tests in the watch mode.
+
+```sh
+npm test
+```
+
+Running tests once.
+
+```sh
+npm run test:ci
+```
+
+Lint projects source code.
+
+```sh
+npm run lint
+```
+
+Format source code with Prettier.
+
+```sh
+npm run format
+```
+
+Start Storybook server.
+
+```sh
+npm run storybook
+```
