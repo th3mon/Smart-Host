@@ -2,6 +2,8 @@
 
 I built a room occupancy optimization tool as a React component.
 
+Project is hosted on the Vercel - https://smart-host.vercel.app/
+
 I used the [Next.js](https://nextjs.org/) framework for two reasons:
 
 1. It allows to use React.
