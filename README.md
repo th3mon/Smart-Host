@@ -87,3 +87,9 @@ Start Storybook server.
 ```sh
 npm run storybook
 ```
+
+## Future Improvements
+
+- Add CI/CD to the project
+- Prepare Styled Components
+- Add Sentry
