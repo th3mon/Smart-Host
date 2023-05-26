@@ -71,7 +71,6 @@ export const RoomOccupancyOptimization: React.FunctionComponent<
     );
 
     setRoomsUsage({
-      ...roomsUsage,
       premium: premiumRoomsUsage,
       economy: economyRoomsUsage,
     });
