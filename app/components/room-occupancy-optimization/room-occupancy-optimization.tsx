@@ -5,6 +5,7 @@ import { dropUpgradedGuests } from './drop-upgraded-guests';
 import { getRoomsUsage } from './get-rooms-usage';
 import { Guests, pickGuests } from './pick-guests';
 import { calculateEmptyRooms, EmptyRooms } from './calculate-empty-rooms';
+import { formatCurrency } from './format-currenct';
 
 export type Rooms = {
   premium: number;
@@ -138,7 +139,7 @@ export const RoomOccupancyOptimization: React.FunctionComponent<
             className="calculated-usage__value calculated-usage__premium text-right font-bold"
             data-testid="premium-usage-value"
           >
-            {roomsUsage.premium + ' EUR'}
+            {formatCurrency(roomsUsage.premium)}
           </p>
 
           <h3 className="calculated-usage-value__header">Economy&nbsp;</h3>
@@ -146,7 +147,7 @@ export const RoomOccupancyOptimization: React.FunctionComponent<
             className="calculated-usage__value calculated-usage__economy text-right font-bold"
             data-testid="economy-usage-value"
           >
-            {roomsUsage.economy + ' EUR'}
+            {formatCurrency(roomsUsage.economy)}
           </p>
 
           <h3 className="calculated-usage-value__header">Summary&nbsp;</h3>

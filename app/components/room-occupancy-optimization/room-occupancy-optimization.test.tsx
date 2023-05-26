@@ -42,8 +42,8 @@ describe('Room Occupancy Optimization', () => {
 
     fireEvent.submit(screen.getByText(/calculate usage/i));
 
-    expect(premiumUsage).toHaveTextContent('738 EUR');
-    expect(economyUsage).toHaveTextContent('167 EUR');
+    expect(premiumUsage).toHaveTextContent('738');
+    expect(economyUsage).toHaveTextContent('167');
   });
 
   it('[TEST 2] should have 1054 EUR premium usage and 189 EUR economy usage', async () => {
@@ -65,8 +65,8 @@ describe('Room Occupancy Optimization', () => {
 
     fireEvent.submit(screen.getByText(/calculate usage/i));
 
-    expect(premiumUsage).toHaveTextContent('1054 EUR');
-    expect(economyUsage).toHaveTextContent('189 EUR');
+    expect(premiumUsage).toHaveTextContent('1.054,00 €');
+    expect(economyUsage).toHaveTextContent('189,00 €');
   });
 
   it('[TEST 3] should have 583 EUR premium usage and 189 EUR economy usage', async () => {
@@ -88,8 +88,8 @@ describe('Room Occupancy Optimization', () => {
 
     fireEvent.submit(screen.getByText(/calculate usage/i));
 
-    expect(premiumUsage).toHaveTextContent('583 EUR');
-    expect(economyUsage).toHaveTextContent('189 EUR');
+    expect(premiumUsage).toHaveTextContent('583,00 €');
+    expect(economyUsage).toHaveTextContent('189,00 €');
   });
 
   it('[TEST 4] should have 1153 EUR premium usage and 45 EUR economy usage', async () => {
@@ -111,7 +111,7 @@ describe('Room Occupancy Optimization', () => {
 
     fireEvent.submit(screen.getByText(/calculate usage/i));
 
-    expect(premiumUsage).toHaveTextContent('1153 EUR');
-    expect(economyUsage).toHaveTextContent('45 EUR');
+    expect(premiumUsage).toHaveTextContent('1.153,00 €');
+    expect(economyUsage).toHaveTextContent('45,00 €');
   });
 });
