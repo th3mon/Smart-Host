@@ -1,0 +1,407 @@
+repo_name: th3mon/Smart-Host
+report_id: e20bfe80e5df272be81c0ba24b64b102
+repo_type: Public
+timestamp: '2023-11-09T13:06:07+00:00'
+requested_by: th3mon
+provider: github
+branch: main
+detected_tools_count: 30
+tools:
+- name: CSS 3
+  description: The latest evolution of the Cascading Style Sheets language
+  website_url: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/6727/css.png
+  detection_source: Repo Metadata
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source: Repo Metadata
+- name: TypeScript
+  description: A superset of JavaScript that compiles to clean JavaScript output
+  website_url: http://www.typescriptlang.org
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
+  detection_source: Repo Metadata
+- name: Autoprefixer
+  description: PostCSS plugin to parse CSS and add vendor prefixes to CSS rules
+  website_url: https://github.com/postcss/autoprefixer
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: CSS Pre-processors / Extensions
+  image_url: https://img.stackshare.io/service/2202/72d087642cfce6fef6f2dabec5bf49e8_400x400.png
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 05:06:42.000000000 Z
+- name: Next.js
+  description: 'A small framework for server-rendered universal JavaScript apps '
+  website_url: https://nextjs.org/
+  version: 13.3.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Frameworks (Full Stack)
+  image_url: https://img.stackshare.io/service/5936/nextjs.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 04:04:38.000000000 Z
+- name: Node.js
+  description: A platform built on Chrome's JavaScript runtime for easily building
+    fast, scalable network applications
+  website_url: http://nodejs.org/
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Frameworks (Full Stack)
+  image_url: https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-04-15 23:41:09.000000000 Z
+- name: React
+  description: A JavaScript library for building user interfaces
+  website_url: https://reactjs.org/
+  version: 18.2.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript UI Libraries
+  image_url: https://img.stackshare.io/service/1020/OYIaJ1KK.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 04:04:38.000000000 Z
+- name: Storybook
+  description: Build bulletproof UI components faster
+  website_url: https://storybook.js.org/
+  version: 7.0.7
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: JavaScript Framework Components
+  image_url: https://img.stackshare.io/service/9240/sOct-Txm_400x400.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 05:06:42.000000000 Z
+- name: ESLint
+  description: The fully pluggable JavaScript code quality tool
+  website_url: http://eslint.org/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/3337/Q4L7Jncy.jpg
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-04-15 23:41:09.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source: Repo Metadata
+- name: Jest
+  description: Painless JavaScript Unit Testing
+  website_url: http://facebook.github.io/jest/
+  version: 29.5.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Javascript Testing Framework
+  image_url: https://img.stackshare.io/service/830/jest.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-04-15 23:41:09.000000000 Z
+- name: Prettier
+  description: 'Prettier is an opinionated code formatter. '
+  website_url: https://prettier.io/
+  version: 2.8.7
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/7035/default_66f265943abed56bcdbfca1c866a4261b1fbb063.jpg
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 04:04:38.000000000 Z
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-04-15 23:41:09.000000000 Z
+- name: PonyDebugger
+  description: Remote network and data debugging for your native iOS app using Chrome
+    Developer Tools
+  website_url: https://github.com/square/PonyDebugger
+  open_source: true
+  hosted_saas: false
+  category: Mobile
+  sub_category: Mobile Runtime Inspector
+  image_url: https://img.stackshare.io/service/729/Logo.png
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-04-15 23:41:09.000000000 Z
+- name: "@storybook/addon-links"
+  description: Story Links addon for storybook
+  package_url: https://www.npmjs.com/@storybook/addon-links
+  version: 7.0.7
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16204/default_41f04716a804e853d5c38a5b81ee0ea8a842ad82.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 05:06:42.000000000 Z
+- name: "@storybook/react"
+  description: 'Storybook for React: Develop React Component in isolation with Hot
+    Reloading'
+  package_url: https://www.npmjs.com/@storybook/react
+  version: 7.0.7
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16042/default_72d4237e6719b7d75d0307bf8b5718584fdc3425.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 05:06:42.000000000 Z
+- name: "@testing-library/jest-dom"
+  description: Custom jest matchers to test the state of the DOM
+  package_url: https://www.npmjs.com/@testing-library/jest-dom
+  version: 5.16.5
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17424/default_1cdcda15ebb7caed879f8340bc212b44c4ec9dac.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 05:06:42.000000000 Z
+- name: "@testing-library/react"
+  description: Simple and complete React DOM testing utilities that encourage good
+    testing practices
+  package_url: https://www.npmjs.com/@testing-library/react
+  version: 14.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16549/default_d522554c6a41cb28d922d6d3ad32ad4afa0e3bb5.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 05:06:42.000000000 Z
+- name: "@types/jest"
+  description: TypeScript definitions for Jest
+  package_url: https://www.npmjs.com/@types/jest
+  version: 29.5.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15840/default_004658cda9b38934f2871435e9dc15608c86e8be.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 05:06:42.000000000 Z
+- name: "@types/node"
+  description: TypeScript definitions for Node.js
+  package_url: https://www.npmjs.com/@types/node
+  version: 16.18.25
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15809/default_5e5e8ac63beda29f31f1844df64d4b8247570a66.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-04-19 02:23:04.000000000 Z
+- name: "@types/react"
+  description: TypeScript definitions for React
+  package_url: https://www.npmjs.com/@types/react
+  version: 18.0.35
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15894/default_1d65e37e65b7f80761374f0202776043277d505d.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 04:04:38.000000000 Z
+- name: "@types/react-dom"
+  description: TypeScript definitions for React
+  package_url: https://www.npmjs.com/@types/react-dom
+  version: 18.0.11
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15946/default_54b691c123fc8979741e800e4dcd3936c0f3b246.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 04:04:38.000000000 Z
+- name: babel-jest
+  description: Jest plugin to use babel for transformation
+  package_url: https://www.npmjs.com/babel-jest
+  version: 29.5.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15839/default_4479dbac220be99e50e724b2df6cf415241d71fd.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 05:06:42.000000000 Z
+- name: eslint-config-prettier
+  description: Turns off all rules that are unnecessary or might conflict with Prettier
+  package_url: https://www.npmjs.com/eslint-config-prettier
+  version: 8.8.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15879/default_0b10af8ca19c215f781dc07442e75bdc831089d0.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 04:04:38.000000000 Z
+- name: jest-environment-jsdom
+  description: Delightful JavaScript Testing
+  package_url: https://www.npmjs.com/jest-environment-jsdom
+  version: 29.5.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/18413/default_867ef7396016341fd213fa568d6de11cc98fefff.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 05:06:42.000000000 Z
+- name: postcss
+  description: Tool for transforming styles with JS plugins
+  package_url: https://www.npmjs.com/postcss
+  version: 8.4.14
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16012/default_7a88bebb451873cc63bd99007de5bd3bb8ef85de.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 05:06:42.000000000 Z
+  vulnerabilities:
+  - name: PostCSS line return parsing error
+    cve_id: CVE-2023-44270
+    cve_url: https://github.com/advisories/GHSA-7fh5-64p2-3v2j
+    detected_date: Oct 4
+    severity: moderate
+    first_patched: 8.4.31
+- name: react-dom
+  description: React package for working with the DOM
+  package_url: https://www.npmjs.com/react-dom
+  version: 18.2.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15808/default_14fd11531839d935f920b6d55bd6f3528c890ad7.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 04:04:38.000000000 Z
+- name: react-test-renderer
+  description: React package for snapshot testing
+  package_url: https://www.npmjs.com/react-test-renderer
+  version: 18.2.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15929/default_ac622bc364a601d766b9a6f6039f191492f54d65.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-05-03 05:06:42.000000000 Z
+- name: tailwindcss
+  description: A utility-first CSS framework for rapidly building custom user interfaces
+  package_url: https://www.npmjs.com/tailwindcss
+  version: 3.3.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17398/default_2cd7ed1c123f2fca074a6f4b16c4e73d5bfe82be.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-04-15 23:41:09.000000000 Z
+- name: ts-node
+  description: TypeScript execution environment and REPL for node.js
+  package_url: https://www.npmjs.com/ts-node
+  version: 10.9.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15830/default_6743ba96cf149a3c3c68a185199f9705d6eff80e.png
+  detection_source_url: package-lock.json
+  detection_source: package.json
+  last_updated_by: Przemysław Szelenberger
+  last_updated_on: 2023-04-16 03:44:17.000000000 Z
